@@ -1,0 +1,76 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+.breadcrumb-item {
+  font-size: 0.8em !important;
+}
+.ellipsis{
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.board-table {
+  table-layout: fixed;
+}
+.board-table .numId, 
+.board-table .views{
+  width: 60px;
+  text-align: center;
+}
+.board-table .author,
+.board-table .date {
+  width: 100px;
+  text-align: center; 
+}
+.table-hover > tbody > tr:hover {
+  background-color: #e6ecff;
+}
+.post-body{
+  white-space: pre-line;
+}
+.post-info{
+  font-size: 0.8em;
+}
+
+.user-form {
+  width: 400px;
+}
+
+.post-index-tool {
+  max-width: 450px;
+}
+.post-index-tool input[type='text']{
+  max-width: 130px;
+}
+
+.hit {
+  animation-name: blink;
+  animation-duration: 1.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  /* 위 속성들을 한 줄로 표기하기 */
+  /* -webkit-animation: blink 1.5s ease infinite; */
+}
+@keyframes blink {
+  from {color: white;}
+  30% {color: yellow;}
+  to {color: red; font-weight: bold;}
+  /* 0% {color:white;}
+  30% {color: yellow;}
+  100% {color:red; font-weight: bold;} */
+}
+.post-body,
+.comment-text {
+  white-space: pre-line;
+}
+.comment-edit,
+.comment-edit-enabled .comment-show {
+  display:none;
+}
+
+.comment-edit-enabled .comment-edit {
+  display:inherit;
+}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+    <div class="container mb-3">
+
+      <div class="jumbotron">
+        <h1>Kyeong Deok</h1>
+        <P>Travel Club</p>
+          <% if(isAuthenticated){ %>
+            <button class="btn btn-primary" onclick="window.open('http://127.0.0.1:3001/chat', 'chat', 'width=500, height=300')">chat</button>
+          <% } %>  
+        </div>
+      
+    </div>
+    
+  </body>
+</html>

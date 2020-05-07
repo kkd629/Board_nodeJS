@@ -1,0 +1,78 @@
+<!-- views/posts/index.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <h2 class="mb-3">Clubs</h2>
+
+      <%=  %>
+      <table class="board-table table table-sm border-bottom table-hover">
+
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Club</th>
+            <th scope="col">Intro</th>
+            <th scope="col">게시판</th>
+            <th scope="col">가입/탈퇴</th>
+            <th scope="col" class="date">Creation Date</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% if(clubs == null || clubs.length == 0){ %>
+            <tr>
+              <td colspan=5> There is no clubs to show :( </td>
+            </tr>
+          <% } %>
+          <% clubs.forEach(function(club) { %>
+            <tr>
+              <td>
+                <a href="/clubs/<%= club._id %>"><div class="ellipsis"><%= club.clubname %></div></a>
+              </td>
+              <td>
+                <span><%= club.intro %></span>
+              </td>
+              <td>
+                <% memberships.forEach(function(membership) {%>
+                  <% if((membership.clubid == club.id)&&(membership.userid == currentUser.id)){ %>
+                    <a href="/posts/<%= club._id %>"><div class="ellipsis">이동하기</div></a>
+                  <% } %>
+                <% }) %>
+              </td>
+              
+
+              <td>
+                <form method="post" action="/memberships/<%= club.id %>/<%= currentUser.id %>">
+                  <a href="#" onclick="confirm('Do you want to join?')?this.parentElement.submit():null;">join</a>
+                </form>
+                <% memberships.forEach(function(membership) {%>
+                  <% if((membership.clubid == club.id)&&(membership.userid == currentUser.id)){ %>
+                    <form action="/memberships/<%= club.id %>/<%= currentUser.id %>?_method=delete" method="post" >
+                      <a href="#" onclick="confirm('Do you want to withdraw?')?this.parentElement.submit():null;">Withdraw</a>
+                    </form>
+                  <% } %>
+                <% }) %>
+              </td>
+              <td class="date">
+                <span data-date="<%= club.createdAt %>"></span> 
+              </td>
+              
+            </tr>
+          <% }) %>
+        </tbody>
+
+      </table>
+      <div>
+        <a class="btn btn-primary" href="/clubs/<%= clubs._id %>/new">New</a>
+      </div>
+
+    </div>
+  </body>
+</html>

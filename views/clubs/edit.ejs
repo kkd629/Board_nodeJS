@@ -1,0 +1,43 @@
+<!-- views/posts/edit.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb p-1 pl-2 pr-2">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/clubs">Club</a></li>
+          <li class="breadcrumb-item"><a href="/clubs/<%= club._id %>"><%= club.clubname %></a></li>
+          <li class="breadcrumb-item active" aria-current="page">Edit Club</li>
+        </ol>
+      </nav>
+
+      <form action="/clubs/<%= club._id %>?_method=put" method="post">
+
+        <div class="form-group">
+          <label for="title">clubname</label>
+          <input type="text" id="clubname" name="clubname" value="<%= club.clubname %>" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="body">intro</label>
+            <input type="text" id="intro" name="intro" class="form-control" value="<%= club.intro %>">
+        </div>
+
+        <div>
+          
+          <a class="btn btn-primary" href="/clubs/<%= club._id %>">Back</a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

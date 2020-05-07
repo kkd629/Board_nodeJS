@@ -1,0 +1,61 @@
+<!-- views/posts/new.ejs -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include('../partials/head') %>
+  </head>
+  <body>
+    <%- include('../partials/nav') %>
+
+    <div class="container mb-3">
+
+      <nav aria-label="breadcrumb"> 
+        <ol class="breadcrumb p-1 pl-2 pr-2">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/clubs">club</a></li>
+          <li class="breadcrumb-item active" aria-current="page">New Club</li>
+        </ol>
+      </nav>
+
+      <form action="/clubs" method="post">
+
+        <div class="form-group">
+          <label for="clubname">Club Name</label>
+          <div class="col-sm-9">
+            <input type="text" id="clubname" name="clubname" value="<%= club.clubname %>" class="form-control <%= (errors.clubname)?'is-invalid':'' %>">
+            <% if(errors.clubname){ %>
+              <span class="invalid-feedback"><%= errors.clubname.message %></span>
+            <% } %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="admin"></label>
+          <div class="col-sm-9">
+            <input type="hidden" id="admin" name="admin" value="<%= currentUser._id %>" class="form-control <%= (errors.admin)?'is-invalid':'' %>">
+            <% if(errors.admin){ %>
+              <span class="invalid-feedback"><%= errors.admin.message %></span>
+            <% } %>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="intro">Club Intro</label>
+          <div class="col-sm-9">
+            <input type="text" id="intro" name="intro" value="<%= club.intro %>" class="form-control <%= (errors.intro)?'is-invalid':'' %>">
+            <% if(errors.intro){ %>
+              <span class="invalid-feedback"><%= errors.intro.message %></span>
+            <% } %>
+          </div>
+        </div>
+        <div>
+          <a class="btn btn-primary" href="/clubs">Back</a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+      </form>
+
+    </div>
+  </body>
+</html>
